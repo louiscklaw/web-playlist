@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
+rm -rf node_modules
+
 set -ex
 
-yarn
+npm install webpack webpack-cli --save-dev
 
-yarn build
+npm install
+
+npm run build
