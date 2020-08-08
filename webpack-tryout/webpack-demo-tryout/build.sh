@@ -2,4 +2,5 @@
 
 set -ex
 
-npm run build
+npm run build:dev
+npm run build:prod
