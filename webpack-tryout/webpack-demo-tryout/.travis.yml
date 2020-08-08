@@ -1,0 +1,10 @@
+
+jobs:
+  include:
+    - stage: Unit_test
+      name: test (webpack-tryout/webpack-demo-tryout)
+      script:
+        - cd webpack-tryout/webpack-demo-tryout
+        -   yarn
+        -   yarn build
+        - cd -
