@@ -2,4 +2,6 @@
 
 set -ex
 
+yarn
+
 npm run build
