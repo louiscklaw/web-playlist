@@ -4,8 +4,7 @@
 # https://docs.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables
 
 import sys
-import os, re, subprocess
-import slack
+import os, re
 import chalk
 
 from fabric.api import local, shell_env, lcd, run, settings
@@ -67,7 +66,8 @@ def merge_to_pre_merge_master_branch(branch_to_merge, cwd):
   create_branch_if_not_exist('pre-merge-master', cwd)
   run_command('git merge -m"pre-merge-master from develop and use theirs for test," origin/develop',cwd)
 
-
+def git_clone_source(PUSH_URI, TEMP_DIR):
+  local('git clone "{}" "{}"'.format(PUSH_URI, TEMP_DIR))
 
 def merge_to_master_branch(branch_to_merge, cwd):
   checkout_branch('master', cwd)
