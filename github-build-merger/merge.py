@@ -280,7 +280,8 @@ def process_dependabot_PR(PUSH_URI, pr_branch, cwd, no_push_uri = False):
 
   # create_branch_if_not_exist_remote(test_pr_branch,cwd)
   checkout_branch('develop', cwd)
-  run_command('git merge {}'.format(pr_branch))
+  run_command('git merge --ff-only "{}"'.format('origin/{}'.format(pr_branch)), cwd)
+  sys.exit(-1)
   push_commit(PUSH_URI, 'develop', cwd, False)
 
   # print('Step 2: Merge the changes and update on GitHub.')
@@ -309,6 +310,7 @@ def print_message(msg_text):
   print(chalk.blue(msg_text))
 
 def run_command(command_body, cwd=OS_CWD, ignore_error=True, except_in=MyException.command_error):
+
   if (DRY_RUN):
     return dummy_run_result()
   else:
