@@ -34,7 +34,7 @@ jobs:
           github-build-merger/test.sh
 
   merge:
-    needs: [test_merger, yahooquery-tryout]
+    needs: [test_merger]
     runs-on: ubuntu-latest
     steps:
       - name: checkout
